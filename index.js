@@ -87,11 +87,35 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log(finances.length);
 
+console.log("Total months = " + finances.length);
 
-for (let index = 0; index < finances.length;index++) {
-    sum += finances[index];    
-}
+let sum= 0;
 
-console.log(sum);
+for (let index=0; index < finances.length;index++) {
+    sum += finances[index][1];    
+};
+
+console.log("Total $ = " + sum);
+
+let changesArray = []
+
+for (let x = 0; x < finances.length; x++) {
+   let current = finances[x][1]
+   if (x>=1){
+   let previous = finances[x-1][1]
+   changesArray.push(current-previous)
+   }
+};
+console.log(changesArray);
+let changesTotal = 0;
+
+for (let index = 0; index < changesArray.length; index++) {
+    let element = changesArray[index];
+    changesTotal = (changesTotal + element);
+    
+};
+
+let changesAverage = (changesTotal/changesArray.length);
+
+console.log(Math.floor(changesAverage))
